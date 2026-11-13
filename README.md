@@ -6,6 +6,11 @@ The framework compares three distinct orchestration styles:
 3. **OO3 (BPM-based):** Deterministic, rule-based execution using a CPEE engine.
 
 ---
+The Implementation contains templates and results for a specific scenario of an Ideation Process:
+
+<img width="545" height="537" alt="image" src="https://github.com/user-attachments/assets/9273d9b5-8c42-4c4e-99d9-47343c86c330" />
+
+---
 
 ## Repository Structure
 
