@@ -1,0 +1,4399 @@
+---
+log:
+  namespaces:
+    stream: https://cpee.org/datastream/
+    ssn: http://www.w3.org/ns/ssn/
+    sosa: http://www.w3.org/ns/sosa/
+  xes:
+    creator: cpee.org
+    features: nested-attributes
+  extension:
+    time: http://www.xes-standard.org/time.xesext
+    concept: http://www.xes-standard.org/concept.xesext
+    id: http://www.xes-standard.org/identity.xesext
+    lifecycle: http://www.xes-standard.org/lifecycle.xesext
+    cpee: http://cpee.org/cpee.xesext
+    stream: https://cpee.org/datastream/datastream.xesext
+  global:
+    trace:
+      concept:name: __NOTSPECIFIED__
+      cpee:name: __NOTSPECIFIED__
+    event:
+      concept:instance: -1
+      concept:name: __NOTSPECIFIED__
+      concept:endpoint: __NOTSPECIFIED__
+      id:id: __NOTSPECIFIED__
+      cpee:uuid: __NOTSPECIFIED__
+      lifecycle:transition: complete
+      cpee:lifecycle:transition: activity/calling
+      time:timestamp: ''
+  trace:
+    concept:name: 115972
+    cpee:name: ideation_process_new
+    cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: ready
+  time:timestamp: '2026-11-10T12:34:28.256145+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  time:timestamp: '2026-11-10T12:34:28.273823+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0" dir="td">
+      <call id="a1" endpoint="get_idea">
+        <parameters>
+          <label>Get Idea</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.idea_description = result['idea_description']</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="impact">
+        <parameters>
+          <label>Get Impact List</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.impact = result
+    data.counter = 0
+    applications = data.idea_description["applications"]
+
+    data.applications = applications.split(',')
+    data.all_apps = []
+    data.cur_app = data.applications[data.counter]
+
+    data.stakes = []</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <parallel eid="e1" wait="-1" cancel="last">
+        <parallel_branch eid="e2">
+          <call id="a3" endpoint="competitive_landscape">
+            <parameters>
+              <label>Competitive Landscape</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_landscape = result['competitive_landscape']
+    data.spider = result['spider']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e3">
+          <call id="a4" endpoint="application_trends">
+            <parameters>
+              <label>Application trends</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.application_trends = result['application_trends']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e4">
+          <call id="a5" endpoint="financial_data">
+            <parameters>
+              <label>Financial data</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.portfolio_review = result['portfolio_review']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e5">
+          <call id="a6" endpoint="competitive_benchmarking">
+            <parameters>
+              <label>Competitive benchmarking</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_benchmarking = result['competitive_benchmarking']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <loop eid="e6" mode="post_test" condition="data.counter &lt; data.applications.length()">
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <_annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_iteration>false</_iteration>
+          </_logging_behavior>
+        </_annotations>
+        <call id="a12" endpoint="stakeholders">
+          <parameters>
+            <label>Stakeholders</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <idea_description>!data.idea_description</idea_description>
+              <applications>!data.applications</applications>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.stakes &lt;&lt; result['stakes']
+    data.stakeholders = result['stakeholders']</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a13" endpoint="jobs_done">
+          <parameters>
+            <label>Jobs</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <stakeholders>!data.stakeholders</stakeholders>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.cur_app = data.applications[data.counter]
+    data.all_apps &lt;&lt; result['jobs_analysis']
+    data.counter = data.counter + 1</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+      </loop>
+      <call id="a7" endpoint="final_judgment">
+        <parameters>
+          <label>Result summary and idea approval</label>
+          <color>#d8f0dd</color>
+          <method>:post</method>
+          <arguments>
+            <spider>!data.spider</spider>
+            <competitive_landscape>!data.competitive_landscape</competitive_landscape>
+            <application_trends>!data.application_trends</application_trends>
+            <competitive_benchmarking>!data.competitive_benchmarking</competitive_benchmarking>
+            <portfolio_review>!data.portfolio_review</portfolio_review>
+            <stakes>!data.stakes</stakes>
+            <all_apps>!data.all_apps</all_apps>
+          </arguments>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: d79199677fb191955eac53d401e628b86c27f70c
+  time:timestamp: '2026-11-10T12:34:28.285826+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  data:
+  - name: theme
+    value: packed
+  time:timestamp: '2026-11-10T15:09:06.747717+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  data:
+  - name: theme
+    value: preset_model
+  time:timestamp: '2026-11-10T15:09:19.861384+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  data:
+  - name: theme
+    value: dataflow
+  time:timestamp: '2026-11-10T15:09:23.394537+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  data:
+  - name: theme
+    value: wellformed
+  time:timestamp: '2026-11-10T15:09:26.444793+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: attributes/change
+  data:
+  - name: theme
+    value: presetlr
+  time:timestamp: '2026-11-10T15:09:29.674201+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0" dir="lr">
+      <call id="a1" endpoint="get_idea">
+        <parameters>
+          <label>Get Idea</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.idea_description = result['idea_description']</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="impact">
+        <parameters>
+          <label>Get Impact List</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.impact = result
+    data.counter = 0
+    applications = data.idea_description["applications"]
+
+    data.applications = applications.split(',')
+    data.all_apps = []
+    data.cur_app = data.applications[data.counter]
+
+    data.stakes = []</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <parallel eid="e1" wait="-1" cancel="last">
+        <parallel_branch eid="e2">
+          <call id="a3" endpoint="competitive_landscape">
+            <parameters>
+              <label>Competitive Landscape</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_landscape = result['competitive_landscape']
+    data.spider = result['spider']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e3">
+          <call id="a4" endpoint="application_trends">
+            <parameters>
+              <label>Application trends</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.application_trends = result['application_trends']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e4">
+          <call id="a5" endpoint="financial_data">
+            <parameters>
+              <label>Financial data</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.portfolio_review = result['portfolio_review']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e5">
+          <call id="a6" endpoint="competitive_benchmarking">
+            <parameters>
+              <label>Competitive benchmarking</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_benchmarking = result['competitive_benchmarking']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <loop eid="e6" mode="post_test" condition="data.counter &lt; data.applications.length()">
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <_annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_iteration>false</_iteration>
+          </_logging_behavior>
+        </_annotations>
+        <call id="a12" endpoint="stakeholders">
+          <parameters>
+            <label>Stakeholders</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <idea_description>!data.idea_description</idea_description>
+              <applications>!data.applications</applications>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.stakes &lt;&lt; result['stakes']
+    data.stakeholders = result['stakeholders']</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a13" endpoint="jobs_done">
+          <parameters>
+            <label>Jobs</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <stakeholders>!data.stakeholders</stakeholders>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.cur_app = data.applications[data.counter]
+    data.all_apps &lt;&lt; result['jobs_analysis']
+    data.counter = data.counter + 1</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+      </loop>
+      <call id="a7" endpoint="final_judgment">
+        <parameters>
+          <label>Result summary and idea approval</label>
+          <color>#d8f0dd</color>
+          <method>:post</method>
+          <arguments>
+            <spider>!data.spider</spider>
+            <competitive_landscape>!data.competitive_landscape</competitive_landscape>
+            <application_trends>!data.application_trends</application_trends>
+            <competitive_benchmarking>!data.competitive_benchmarking</competitive_benchmarking>
+            <portfolio_review>!data.portfolio_review</portfolio_review>
+            <stakes>!data.stakes</stakes>
+            <all_apps>!data.all_apps</all_apps>
+          </arguments>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: 6593a0a0d76712633487b519e497694ff26c291e
+  time:timestamp: '2026-11-10T15:53:06.457075+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0" dir="lr">
+      <call id="a1" endpoint="get_idea">
+        <parameters>
+          <label>Get Idea</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.idea_description = result['idea_description']</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="impact">
+        <parameters>
+          <label>Get Impact List</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.impact = result
+    data.counter = 0
+    applications = data.idea_description["applications"]
+
+    data.applications = applications.split(',')
+    data.all_apps = []
+    data.cur_app = data.applications[data.counter]
+
+    data.stakes = []</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <parallel eid="e1" wait="-1" cancel="last">
+        <parallel_branch eid="e2">
+          <call id="a3" endpoint="competitive_landscape">
+            <parameters>
+              <label>Competitive Landscape</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_landscape = result['competitive_landscape']
+    data.spider = result['spider']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e3">
+          <call id="a4" endpoint="application_trends">
+            <parameters>
+              <label>Application trends</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.application_trends = result['application_trends']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e4">
+          <call id="a5" endpoint="financial_data">
+            <parameters>
+              <label>Financial data</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.portfolio_review = result['portfolio_review']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e5">
+          <call id="a6" endpoint="competitive_benchmarking">
+            <parameters>
+              <label>Competitive benchmarking</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_benchmarking = result['competitive_benchmarking']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <loop eid="e6" mode="post_test" condition="data.counter &lt; data.applications.length()">
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <_annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_iteration>false</_iteration>
+          </_logging_behavior>
+        </_annotations>
+        <call id="a12" endpoint="stakeholders">
+          <parameters>
+            <label>Stakeholders</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <idea_description>!data.idea_description</idea_description>
+              <applications>!data.applications</applications>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.stakes &lt;&lt; result['stakes']
+    data.stakeholders = result['stakeholders']</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a13" endpoint="jobs_done">
+          <parameters>
+            <label>Jobs</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <stakeholders>!data.stakeholders</stakeholders>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.cur_app = data.applications[data.counter]
+    data.all_apps &lt;&lt; result['jobs_analysis']
+    data.counter = data.counter + 1</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+      </loop>
+      <call id="a7" endpoint="final_judgment">
+        <parameters>
+          <label>Result summary and idea approval</label>
+          <color>#d8f0dd</color>
+          <method>:post</method>
+          <arguments>
+            <spider>!data.spider</spider>
+            <competitive_landscape>!data.competitive_landscape</competitive_landscape>
+            <application_trends>!data.application_trends</application_trends>
+            <competitive_benchmarking>!data.competitive_benchmarking</competitive_benchmarking>
+            <portfolio_review>!data.portfolio_review</portfolio_review>
+            <stakes>!data.stakes</stakes>
+            <all_apps>!data.all_apps</all_apps>
+          </arguments>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: 4229cdb6b85951908b4abf62eec7dda1bdf4fb2b
+  time:timestamp: '2026-11-10T15:53:10.543174+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0" dir="lr">
+      <call id="a1" endpoint="get_idea">
+        <parameters>
+          <label>Get Idea</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.idea_description = result['idea_description']</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="impact">
+        <parameters>
+          <label>Get Impact List</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.impact = result
+    data.counter = 0
+    applications = data.idea_description["applications"]
+
+    data.applications = applications.split(',')
+    data.all_apps = []
+    data.cur_app = data.applications[data.counter]
+
+    data.stakes = []</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <parallel eid="e1" wait="-1" cancel="last">
+        <parallel_branch eid="e2">
+          <call id="a3" endpoint="competitive_landscape">
+            <parameters>
+              <label>Competitive Landscape</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_landscape = result['competitive_landscape']
+    data.spider = result['spider']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e3">
+          <call id="a4" endpoint="application_trends">
+            <parameters>
+              <label>Application trends</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.application_trends = result['application_trends']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e4">
+          <call id="a5" endpoint="financial_data">
+            <parameters>
+              <label>Financial data</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.portfolio_review = result['portfolio_review']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e5">
+          <call id="a6" endpoint="competitive_benchmarking">
+            <parameters>
+              <label>Competitive benchmarking</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_benchmarking = result['competitive_benchmarking']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <loop eid="e6" mode="post_test" condition="data.counter &lt; data.applications.length()">
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <_annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_iteration>false</_iteration>
+          </_logging_behavior>
+        </_annotations>
+        <call id="a12" endpoint="stakeholders">
+          <parameters>
+            <label>Stakeholders</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <idea_description>!data.idea_description</idea_description>
+              <applications>!data.applications</applications>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.stakes &lt;&lt; result['stakes']
+    data.stakeholders = result['stakeholders']</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a13" endpoint="jobs_done">
+          <parameters>
+            <label>Jobs</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <stakeholders>!data.stakeholders</stakeholders>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.cur_app = data.applications[data.counter]
+    data.all_apps &lt;&lt; result['jobs_analysis']
+    data.counter = data.counter + 1</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+      </loop>
+      <call id="a7" endpoint="final_judgment">
+        <parameters>
+          <label>Result summary and idea approval</label>
+          <color>#d8f0dd</color>
+          <method>:post</method>
+          <arguments>
+            <spider>!data.spider</spider>
+            <competitive_landscape>!data.competitive_landscape</competitive_landscape>
+            <application_trends>!data.application_trends</application_trends>
+            <competitive_benchmarking>!data.competitive_benchmarking</competitive_benchmarking>
+            <portfolio_review>!data.portfolio_review</portfolio_review>
+            <stakes>!data.stakes</stakes>
+            <all_apps>!data.all_apps</all_apps>
+          </arguments>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: a1889a17b164dee5bc2fe1e7fb665de20e4b49f3
+  time:timestamp: '2026-11-10T15:53:14.519306+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0" dir="lr">
+      <call id="a1" endpoint="get_idea">
+        <parameters>
+          <label>Get Idea</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.idea_description = result['idea_description']</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="impact">
+        <parameters>
+          <label>Get Impact List</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.impact = result
+    data.counter = 0
+    applications = data.idea_description["applications"]
+
+    data.applications = applications.split(',')
+    data.all_apps = []
+    data.cur_app = data.applications[data.counter]
+
+    data.stakes = []</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <parallel eid="e1" wait="-1" cancel="last">
+        <parallel_branch eid="e2">
+          <call id="a3" endpoint="competitive_landscape">
+            <parameters>
+              <label>Competitive Landscape</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_landscape = result['competitive_landscape']
+    data.spider = result['spider']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e3">
+          <call id="a4" endpoint="application_trends">
+            <parameters>
+              <label>Application trends</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.application_trends = result['application_trends']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e4">
+          <call id="a5" endpoint="financial_data">
+            <parameters>
+              <label>Financial data</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.portfolio_review = result['portfolio_review']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e5">
+          <call id="a6" endpoint="competitive_benchmarking">
+            <parameters>
+              <label>Competitive benchmarking</label>
+              <color>#d8f0dd</color>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_benchmarking = result['competitive_benchmarking']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <loop eid="e6" mode="post_test" condition="data.counter &lt; data.applications.length()">
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <_annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_iteration>false</_iteration>
+          </_logging_behavior>
+        </_annotations>
+        <call id="a12" endpoint="stakeholders">
+          <parameters>
+            <label>Stakeholders</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <idea_description>!data.idea_description</idea_description>
+              <applications>!data.applications</applications>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.stakes &lt;&lt; result['stakes']
+    data.stakeholders = result['stakeholders']</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a13" endpoint="jobs_done">
+          <parameters>
+            <label>Jobs</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <stakeholders>!data.stakeholders</stakeholders>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.cur_app = data.applications[data.counter]
+    data.all_apps &lt;&lt; result['jobs_analysis']
+    data.counter = data.counter + 1</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+      </loop>
+      <call id="a7" endpoint="final_judgment">
+        <parameters>
+          <label>Result summary and idea approval</label>
+          <color/>
+          <method>:post</method>
+          <arguments>
+            <spider>!data.spider</spider>
+            <competitive_landscape>!data.competitive_landscape</competitive_landscape>
+            <application_trends>!data.application_trends</application_trends>
+            <competitive_benchmarking>!data.competitive_benchmarking</competitive_benchmarking>
+            <portfolio_review>!data.portfolio_review</portfolio_review>
+            <stakes>!data.stakes</stakes>
+            <all_apps>!data.all_apps</all_apps>
+          </arguments>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: ac9cfdb7d028a4d6de949e85075c7b0764b8802a
+  time:timestamp: '2026-11-10T15:53:18.270286+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: description/change
+  cpee:description: |
+    <?xml version="1.0"?>
+    <description xmlns="http://cpee.org/ns/description/1.0" dir="lr">
+      <call id="a1" endpoint="get_idea">
+        <parameters>
+          <label>Get Idea</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.idea_description = result['idea_description']</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <call id="a2" endpoint="impact">
+        <parameters>
+          <label>Get Impact List</label>
+          <color/>
+          <method>:get</method>
+          <arguments/>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result">data.impact = result
+    data.counter = 0
+    applications = data.idea_description["applications"]
+
+    data.applications = applications.split(',')
+    data.all_apps = []
+    data.cur_app = data.applications[data.counter]
+
+    data.stakes = []</finalize>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+      <parallel eid="e1" wait="-1" cancel="last">
+        <parallel_branch eid="e2">
+          <call id="a3" endpoint="competitive_landscape">
+            <parameters>
+              <label>Competitive Landscape</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_landscape = result['competitive_landscape']
+    data.spider = result['spider']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e3">
+          <call id="a4" endpoint="application_trends">
+            <parameters>
+              <label>Application trends</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.application_trends = result['application_trends']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e4">
+          <call id="a5" endpoint="financial_data">
+            <parameters>
+              <label>Financial data</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.portfolio_review = result['portfolio_review']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+        <parallel_branch eid="e5">
+          <call id="a6" endpoint="competitive_benchmarking">
+            <parameters>
+              <label>Competitive benchmarking</label>
+              <color/>
+              <method>:post</method>
+              <arguments>
+                <idea_description>!data.idea_description</idea_description>
+              </arguments>
+            </parameters>
+            <code>
+              <signal>false</signal>
+              <prepare/>
+              <finalize output="result">data.competitive_benchmarking = result['competitive_benchmarking']</finalize>
+              <update output="result"/>
+              <rescue output="result"/>
+            </code>
+            <annotations>
+              <_generic/>
+              <_logging_behavior>
+                <_exclude>false</_exclude>
+                <_include>false</_include>
+              </_logging_behavior>
+              <_timing>
+                <_timing_weight/>
+                <_timing_avg/>
+                <explanations/>
+              </_timing>
+              <_shifting>
+                <_shifting_type>Duration</_shifting_type>
+              </_shifting>
+              <_context_data_analysis>
+                <probes/>
+                <ips/>
+              </_context_data_analysis>
+              <report>
+                <url/>
+              </report>
+              <_notes>
+                <_notes_general/>
+              </_notes>
+            </annotations>
+            <documentation>
+              <input/>
+              <output/>
+              <implementation>
+                <description/>
+              </implementation>
+              <code>
+                <description/>
+              </code>
+            </documentation>
+          </call>
+        </parallel_branch>
+      </parallel>
+      <loop eid="e6" mode="post_test" condition="data.counter &lt; data.applications.length()">
+        <_probability>
+          <_probability_min/>
+          <_probability_max/>
+          <_probability_avg/>
+        </_probability>
+        <_annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_iteration>false</_iteration>
+          </_logging_behavior>
+        </_annotations>
+        <call id="a12" endpoint="stakeholders">
+          <parameters>
+            <label>Stakeholders</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <idea_description>!data.idea_description</idea_description>
+              <applications>!data.applications</applications>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.stakes &lt;&lt; result['stakes']
+    data.stakeholders = result['stakeholders']</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+        <call id="a13" endpoint="jobs_done">
+          <parameters>
+            <label>Jobs</label>
+            <color/>
+            <method>:post</method>
+            <arguments>
+              <stakeholders>!data.stakeholders</stakeholders>
+            </arguments>
+          </parameters>
+          <code>
+            <signal>false</signal>
+            <prepare/>
+            <finalize output="result">data.cur_app = data.applications[data.counter]
+    data.all_apps &lt;&lt; result['jobs_analysis']
+    data.counter = data.counter + 1</finalize>
+            <update output="result"/>
+            <rescue output="result"/>
+          </code>
+          <annotations>
+            <_generic/>
+            <_logging_behavior>
+              <_exclude>false</_exclude>
+              <_include>false</_include>
+            </_logging_behavior>
+            <_timing>
+              <_timing_weight/>
+              <_timing_avg/>
+              <explanations/>
+            </_timing>
+            <_shifting>
+              <_shifting_type>Duration</_shifting_type>
+            </_shifting>
+            <_context_data_analysis>
+              <probes/>
+              <ips/>
+            </_context_data_analysis>
+            <report>
+              <url/>
+            </report>
+            <_notes>
+              <_notes_general/>
+            </_notes>
+          </annotations>
+          <documentation>
+            <input/>
+            <output/>
+            <implementation>
+              <description/>
+            </implementation>
+            <code>
+              <description/>
+            </code>
+          </documentation>
+        </call>
+      </loop>
+      <call id="a7" endpoint="final_judgment">
+        <parameters>
+          <label>Result summary and idea approval</label>
+          <color/>
+          <method>:post</method>
+          <arguments>
+            <spider>!data.spider</spider>
+            <competitive_landscape>!data.competitive_landscape</competitive_landscape>
+            <application_trends>!data.application_trends</application_trends>
+            <competitive_benchmarking>!data.competitive_benchmarking</competitive_benchmarking>
+            <portfolio_review>!data.portfolio_review</portfolio_review>
+            <stakes>!data.stakes</stakes>
+            <all_apps>!data.all_apps</all_apps>
+          </arguments>
+        </parameters>
+        <code>
+          <signal>false</signal>
+          <prepare/>
+          <finalize output="result"/>
+          <update output="result"/>
+          <rescue output="result"/>
+        </code>
+        <annotations>
+          <_generic/>
+          <_logging_behavior>
+            <_exclude>false</_exclude>
+            <_include>false</_include>
+          </_logging_behavior>
+          <_timing>
+            <_timing_weight/>
+            <_timing_avg/>
+            <explanations/>
+          </_timing>
+          <_shifting>
+            <_shifting_type>Duration</_shifting_type>
+          </_shifting>
+          <_context_data_analysis>
+            <probes/>
+            <ips/>
+          </_context_data_analysis>
+          <report>
+            <url/>
+          </report>
+          <_notes>
+            <_notes_general/>
+          </_notes>
+        </annotations>
+        <documentation>
+          <input/>
+          <output/>
+          <implementation>
+            <description/>
+          </implementation>
+          <code>
+            <description/>
+          </code>
+        </documentation>
+      </call>
+    </description>
+  cpee:change_uuid: 17f31f1d93c798dc803b6b2058913f9bc1c1e70a
+  time:timestamp: '2026-11-10T15:53:22.904195+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Idea
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4569/get_idea
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: 6101185a2859b75bcf3bb8b614ce93f8
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  time:timestamp: '2026-11-12T14:49:25.235159+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: running
+  time:timestamp: '2026-11-12T14:49:25.233799+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Idea
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4569/get_idea
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: 6101185a2859b75bcf3bb8b614ce93f8
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:49:25.330895+01:00'
+  data:
+  - name: error
+    mimetype: application/json
+    data: '{"status":502,"error":"<html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502
+      Bad Gateway</h1></center>\r\n<hr><center>nginx/1.28.3 (Ubuntu)</center>\r\n</body>\r\n</html>\r\n"}'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: stopping
+  time:timestamp: '2026-11-12T14:49:25.414646+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: stopped
+  time:timestamp: '2026-11-12T14:49:25.416546+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: get_idea
+    value: https://lehre.bpm.in.tum.de/ports/4568/get_idea
+  time:timestamp: '2026-11-12T14:50:01.572977+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: competitive_landscape
+    value: https://lehre.bpm.in.tum.de/ports/4568/competitive_landscape
+  time:timestamp: '2026-11-12T14:50:04.283097+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: application_trends
+    value: https://lehre.bpm.in.tum.de/ports/4568/application_trends
+  time:timestamp: '2026-11-12T14:50:07.152242+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: competitive_benchmarking
+    value: https://lehre.bpm.in.tum.de/ports/4568/competitive_benchmarking
+  time:timestamp: '2026-11-12T14:50:09.200587+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: financial_data
+    value: https://lehre.bpm.in.tum.de/ports/4568/financial_data
+  time:timestamp: '2026-11-12T14:50:11.089116+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: stakeholders
+    value: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  time:timestamp: '2026-11-12T14:50:14.429171+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: jobs_done
+    value: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  time:timestamp: '2026-11-12T14:50:16.897372+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: endpoints/change
+  data:
+  - name: final_judgment
+    value: https://lehre.bpm.in.tum.de/ports/4568/final_judgment
+  time:timestamp: '2026-11-12T14:50:19.643553+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Idea
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/get_idea
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: 93b78250b9282a5099086804ca7dd096
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  time:timestamp: '2026-11-12T14:50:30.655463+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: running
+  time:timestamp: '2026-11-12T14:50:30.654057+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Idea
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/get_idea
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: 93b78250b9282a5099086804ca7dd096
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:30.746282+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "idea_description": {"acronym": "SmartShelf", "idea_type":
+      "product", "idea_impact": "High efficiency gain in retail", "brand": "thorn",
+      "applications": "Retail, Art & Culture", "description": "An AI-powered modular
+      shelf system that tracks inventory in real-time and dynamically adjusts digital
+      price tags.", "reason": "Reduce out-of-stock situations and manual labor", "audience":
+      "Store managers and museum curators", "status": "submitted"}}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Idea
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/get_idea
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: 93b78250b9282a5099086804ca7dd096
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:30.766092+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Idea
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/get_idea
+  id:id: a1
+  cpee:activity: a1
+  cpee:activity_uuid: 93b78250b9282a5099086804ca7dd096
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: idea_description
+    value:
+      acronym: SmartShelf
+      idea_type: product
+      idea_impact: High efficiency gain in retail
+      brand: thorn
+      applications: Retail, Art & Culture
+      description: An AI-powered modular shelf system that tracks inventory in real-time
+        and dynamically adjusts digital price tags.
+      reason: Reduce out-of-stock situations and manual labor
+      audience: Store managers and museum curators
+      status: submitted
+  time:timestamp: '2026-11-12T14:50:30.764673+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Impact List
+  concept:endpoint: http://localhost/data/ideas_phase1/application_list.json
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: 28860612ac8c077d52511cd19fe3a410
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  time:timestamp: '2026-11-12T14:50:30.767620+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Impact List
+  concept:endpoint: http://localhost/data/ideas_phase1/application_list.json
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: 28860612ac8c077d52511cd19fe3a410
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:30.781882+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: |
+      {
+          "applications": [
+              "Health & Care",
+              "Education and Science",
+              "Presentation and Retail"
+          ],
+          "projects": [
+              "Aquaforce",
+              "Tecton C",
+              "CrossSign"
+          ]
+      }
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Impact List
+  concept:endpoint: http://localhost/data/ideas_phase1/application_list.json
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: 28860612ac8c077d52511cd19fe3a410
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:30.804163+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Get Impact List
+  concept:endpoint: http://localhost/data/ideas_phase1/application_list.json
+  id:id: a2
+  cpee:activity: a2
+  cpee:activity_uuid: 28860612ac8c077d52511cd19fe3a410
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: impact
+    value:
+      applications:
+      - Health & Care
+      - Education and Science
+      - Presentation and Retail
+      projects:
+      - Aquaforce
+      - Tecton C
+      - CrossSign
+  - name: counter
+    value: 0
+  - name: applications
+    value:
+    - Retail
+    - " Art & Culture"
+  - name: all_apps
+    value: []
+  - name: cur_app
+    value: Retail
+  - name: stakes
+    value: []
+  time:timestamp: '2026-11-12T14:50:30.803985+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Application trends
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/application_trends
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: 0c3b3e2d543b76bf451749db8605aa12
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: idea_description
+    value:
+      acronym: SmartShelf
+      idea_type: product
+      idea_impact: High efficiency gain in retail
+      brand: thorn
+      applications: Retail, Art & Culture
+      description: An AI-powered modular shelf system that tracks inventory in real-time
+        and dynamically adjusts digital price tags.
+      reason: Reduce out-of-stock situations and manual labor
+      audience: Store managers and museum curators
+      status: submitted
+  time:timestamp: '2026-11-12T14:50:30.842881+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive Landscape
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_landscape
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 621b1ab5445e78059af869db2f64690b
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: idea_description
+    value:
+      acronym: SmartShelf
+      idea_type: product
+      idea_impact: High efficiency gain in retail
+      brand: thorn
+      applications: Retail, Art & Culture
+      description: An AI-powered modular shelf system that tracks inventory in real-time
+        and dynamically adjusts digital price tags.
+      reason: Reduce out-of-stock situations and manual labor
+      audience: Store managers and museum curators
+      status: submitted
+  time:timestamp: '2026-11-12T14:50:30.844718+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive benchmarking
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_benchmarking
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: 3056fb17add8d992f88cfb739704006e
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: idea_description
+    value:
+      acronym: SmartShelf
+      idea_type: product
+      idea_impact: High efficiency gain in retail
+      brand: thorn
+      applications: Retail, Art & Culture
+      description: An AI-powered modular shelf system that tracks inventory in real-time
+        and dynamically adjusts digital price tags.
+      reason: Reduce out-of-stock situations and manual labor
+      audience: Store managers and museum curators
+      status: submitted
+  time:timestamp: '2026-11-12T14:50:30.859499+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Financial data
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/financial_data
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: d1ba62444a57e7cf95fe53c7eb089e44
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: idea_description
+    value:
+      acronym: SmartShelf
+      idea_type: product
+      idea_impact: High efficiency gain in retail
+      brand: thorn
+      applications: Retail, Art & Culture
+      description: An AI-powered modular shelf system that tracks inventory in real-time
+        and dynamically adjusts digital price tags.
+      reason: Reduce out-of-stock situations and manual labor
+      audience: Store managers and museum curators
+      status: submitted
+  time:timestamp: '2026-11-12T14:50:30.846089+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Financial data
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/financial_data
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: d1ba62444a57e7cf95fe53c7eb089e44
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:32.978162+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "portfolio_review": [{"metric": "Estimated R&D Cost",
+      "value": "\u20ac150,000", "assessment": "Medium"}, {"metric": "Target Gross
+      Margin", "value": "45%", "assessment": "High"}, {"metric": "Expected Payback
+      Period", "value": "2.5 Years", "assessment": "Favorable"}, {"metric": "Portfolio
+      Fit Index", "value": "8.5 / 10", "assessment": "Strategic High"}]}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Financial data
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/financial_data
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: d1ba62444a57e7cf95fe53c7eb089e44
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: portfolio_review
+    value:
+    - metric: Estimated R&D Cost
+      value: "â‚¬150,000"
+      assessment: Medium
+    - metric: Target Gross Margin
+      value: 45%
+      assessment: High
+    - metric: Expected Payback Period
+      value: 2.5 Years
+      assessment: Favorable
+    - metric: Portfolio Fit Index
+      value: 8.5 / 10
+      assessment: Strategic High
+  time:timestamp: '2026-11-12T14:50:33.005209+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Financial data
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/financial_data
+  id:id: a5
+  cpee:activity: a5
+  cpee:activity_uuid: d1ba62444a57e7cf95fe53c7eb089e44
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:33.005411+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Application trends
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/application_trends
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: 0c3b3e2d543b76bf451749db8605aa12
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:34.843086+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "application_trends": "Current digital trends highlight
+      the growing importance of personalization, automation, and sustainability across
+      various sectors such as retail and art & culture. Market adoption is driven
+      by consumer demand for enhanced experiences, the increasing use of AI and data
+      analytics, and a focus on eco-friendly practices. Given the lack of specific
+      details about the product idea, its alignment with these trends is uncertain.
+      However, if it can incorporate elements like personalized user experiences or
+      sustainable solutions, it may have a strong market fit. Future relevance will
+      depend on its adaptability to evolving consumer preferences and technological
+      advancements."}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Application trends
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/application_trends
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: 0c3b3e2d543b76bf451749db8605aa12
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: application_trends
+    value: Current digital trends highlight the growing importance of personalization,
+      automation, and sustainability across various sectors such as retail and art
+      & culture. Market adoption is driven by consumer demand for enhanced experiences,
+      the increasing use of AI and data analytics, and a focus on eco-friendly practices.
+      Given the lack of specific details about the product idea, its alignment with
+      these trends is uncertain. However, if it can incorporate elements like personalized
+      user experiences or sustainable solutions, it may have a strong market fit.
+      Future relevance will depend on its adaptability to evolving consumer preferences
+      and technological advancements.
+  time:timestamp: '2026-11-12T14:50:34.868736+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Application trends
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/application_trends
+  id:id: a4
+  cpee:activity: a4
+  cpee:activity_uuid: 0c3b3e2d543b76bf451749db8605aa12
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:34.868886+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive Landscape
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_landscape
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 621b1ab5445e78059af869db2f64690b
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:38.695344+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "competitive_landscape": "The product idea does not
+      have specific details, which makes it difficult to identify direct competitors.
+      However, in a general sense, it may face competition from a range of existing
+      products that cater to a broad audience. Competitors could include established
+      brands that offer similar functionalities or services in a general market. The
+      absence of detailed attributes in the product idea limits the ability to precisely
+      pinpoint competitive advantages or disadvantages.", "spider": [["category",
+      "brand", "competitor 1", "competitor 2"], ["range breadth", 8, 5, 7], ["aesthetics",
+      7, 6, 8], ["market price", 6, 7, 5], ["efficiency", 9, 6, 7], ["lifetime", 8,
+      7, 6], ["controlability", 8, 6, 7]]}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive Landscape
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_landscape
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 621b1ab5445e78059af869db2f64690b
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: competitive_landscape
+    value: The product idea does not have specific details, which makes it difficult
+      to identify direct competitors. However, in a general sense, it may face competition
+      from a range of existing products that cater to a broad audience. Competitors
+      could include established brands that offer similar functionalities or services
+      in a general market. The absence of detailed attributes in the product idea
+      limits the ability to precisely pinpoint competitive advantages or disadvantages.
+  - name: spider
+    value:
+    - - category
+      - brand
+      - competitor 1
+      - competitor 2
+    - - range breadth
+      - 8
+      - 5
+      - 7
+    - - aesthetics
+      - 7
+      - 6
+      - 8
+    - - market price
+      - 6
+      - 7
+      - 5
+    - - efficiency
+      - 9
+      - 6
+      - 7
+    - - lifetime
+      - 8
+      - 7
+      - 6
+    - - controlability
+      - 8
+      - 6
+      - 7
+  time:timestamp: '2026-11-12T14:50:38.721573+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive Landscape
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_landscape
+  id:id: a3
+  cpee:activity: a3
+  cpee:activity_uuid: 621b1ab5445e78059af869db2f64690b
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:38.722219+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive benchmarking
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_benchmarking
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: 3056fb17add8d992f88cfb739704006e
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:40.725502+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "competitive_benchmarking": "The product idea lacks
+      specific details, making it challenging to benchmark effectively against key
+      market alternatives. However, identifying unique selling propositions (USPs)
+      and technological advantages will depend on understanding the target applications
+      and audience. Without clarity on the product''s features, price point, and intended
+      benefits, assessing market barriers becomes speculative. Competitive products
+      can vary widely, and their strengths or weaknesses must be analyzed in relation
+      to the proposed innovation. A more focused description will enable a more precise
+      and meaningful competitive analysis."}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive benchmarking
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_benchmarking
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: 3056fb17add8d992f88cfb739704006e
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: competitive_benchmarking
+    value: The product idea lacks specific details, making it challenging to benchmark
+      effectively against key market alternatives. However, identifying unique selling
+      propositions (USPs) and technological advantages will depend on understanding
+      the target applications and audience. Without clarity on the product's features,
+      price point, and intended benefits, assessing market barriers becomes speculative.
+      Competitive products can vary widely, and their strengths or weaknesses must
+      be analyzed in relation to the proposed innovation. A more focused description
+      will enable a more precise and meaningful competitive analysis.
+  time:timestamp: '2026-11-12T14:50:40.745450+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: e1
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: gateway/join
+  time:timestamp: '2026-11-12T14:50:40.749584+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 40b827328acbcfba5f136725d4a57e10
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: idea_description
+    value:
+      acronym: SmartShelf
+      idea_type: product
+      idea_impact: High efficiency gain in retail
+      brand: thorn
+      applications: Retail, Art & Culture
+      description: An AI-powered modular shelf system that tracks inventory in real-time
+        and dynamically adjusts digital price tags.
+      reason: Reduce out-of-stock situations and manual labor
+      audience: Store managers and museum curators
+      status: submitted
+  - name: applications
+    value:
+    - Retail
+    - " Art & Culture"
+  time:timestamp: '2026-11-12T14:50:40.769666+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Competitive benchmarking
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/competitive_benchmarking
+  id:id: a6
+  cpee:activity: a6
+  cpee:activity_uuid: 3056fb17add8d992f88cfb739704006e
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:40.746014+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 40b827328acbcfba5f136725d4a57e10
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:40.809005+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "buyer": "Operations Manager", "stakeholders": ["Operations
+      Manager", "Department Lead", "End User"], "stakes": [["Operations Manager",
+      "high"], ["Department Lead", "middle"], ["End User", "low"]]}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 40b827328acbcfba5f136725d4a57e10
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: stakeholders
+    value:
+    - Operations Manager
+    - Department Lead
+    - End User
+  - name: stakes
+    value:
+    - - - Operations Manager
+        - high
+      - - Department Lead
+        - middle
+      - - End User
+        - low
+  time:timestamp: '2026-11-12T14:50:40.833666+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 7af697dc2732b80e6386447aba98d266
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: stakeholders
+    value:
+    - Operations Manager
+    - Department Lead
+    - End User
+  time:timestamp: '2026-11-12T14:50:40.843530+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: 40b827328acbcfba5f136725d4a57e10
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:40.834043+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 7af697dc2732b80e6386447aba98d266
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:40.882531+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "jobs_analysis": [{"stakeholder": "Store Manager",
+      "job": "Monitor daily performance and resource availability efficiently.", "struggle":
+      "Manual data tracking is time-consuming and prone to human error."}]}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 7af697dc2732b80e6386447aba98d266
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: cur_app
+    value: Retail
+  - name: counter
+    value: 1
+  - name: all_apps
+    value:
+    - - stakeholder: Store Manager
+        job: Monitor daily performance and resource availability efficiently.
+        struggle: Manual data tracking is time-consuming and prone to human error.
+  time:timestamp: '2026-11-12T14:50:40.913317+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 7af697dc2732b80e6386447aba98d266
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:40.919414+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: e6
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: gateway/decide
+  data:
+    condition: data.counter < data.applications.length()
+    result: true
+    type: loop
+    variant: tail
+    count: 1
+  time:timestamp: '2026-11-12T14:50:40.939191+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: a81cdef07b780accfb45ac033f3b51db
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: idea_description
+    value:
+      acronym: SmartShelf
+      idea_type: product
+      idea_impact: High efficiency gain in retail
+      brand: thorn
+      applications: Retail, Art & Culture
+      description: An AI-powered modular shelf system that tracks inventory in real-time
+        and dynamically adjusts digital price tags.
+      reason: Reduce out-of-stock situations and manual labor
+      audience: Store managers and museum curators
+      status: submitted
+  - name: applications
+    value:
+    - Retail
+    - " Art & Culture"
+  time:timestamp: '2026-11-12T14:50:40.968067+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: a81cdef07b780accfb45ac033f3b51db
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:41.020400+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "buyer": "Operations Manager", "stakeholders": ["Operations
+      Manager", "Department Lead", "End User"], "stakes": [["Operations Manager",
+      "high"], ["Department Lead", "middle"], ["End User", "low"]]}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: a81cdef07b780accfb45ac033f3b51db
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:41.044094+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Stakeholders
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/stakeholders
+  id:id: a12
+  cpee:activity: a12
+  cpee:activity_uuid: a81cdef07b780accfb45ac033f3b51db
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: stakeholders
+    value:
+    - Operations Manager
+    - Department Lead
+    - End User
+  - name: stakes
+    value:
+    - - - Operations Manager
+        - high
+      - - Department Lead
+        - middle
+      - - End User
+        - low
+    - - - Operations Manager
+        - high
+      - - Department Lead
+        - middle
+      - - End User
+        - low
+  time:timestamp: '2026-11-12T14:50:41.043181+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 81e4ef3950dc62d30ebc5e7745bc1249
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: stakeholders
+    value:
+    - Operations Manager
+    - Department Lead
+    - End User
+  time:timestamp: '2026-11-12T14:50:41.051860+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 81e4ef3950dc62d30ebc5e7745bc1249
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: dataelements/change
+  data:
+  - name: cur_app
+    value: " Art & Culture"
+  - name: counter
+    value: 2
+  - name: all_apps
+    value:
+    - - stakeholder: Store Manager
+        job: Monitor daily performance and resource availability efficiently.
+        struggle: Manual data tracking is time-consuming and prone to human error.
+    - - stakeholder: Store Manager
+        job: Monitor daily performance and resource availability efficiently.
+        struggle: Manual data tracking is time-consuming and prone to human error.
+  time:timestamp: '2026-11-12T14:50:41.105849+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 81e4ef3950dc62d30ebc5e7745bc1249
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:41.086070+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "jobs_analysis": [{"stakeholder": "Store Manager",
+      "job": "Monitor daily performance and resource availability efficiently.", "struggle":
+      "Manual data tracking is time-consuming and prone to human error."}]}'
+---
+event:
+  concept:instance: 115972
+  id:id: e6
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: gateway/decide
+  data:
+    condition: data.counter < data.applications.length()
+    result: false
+    type: loop
+    variant: tail
+    count: 2
+  time:timestamp: '2026-11-12T14:50:41.116209+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Jobs
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/jobs_done
+  id:id: a13
+  cpee:activity: a13
+  cpee:activity_uuid: 81e4ef3950dc62d30ebc5e7745bc1249
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:41.106876+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Result summary and idea approval
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/final_judgment
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 11ff5c2b0e4263587df10f0524292414
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: start
+  cpee:lifecycle:transition: activity/calling
+  data:
+  - name: spider
+    value:
+    - - category
+      - brand
+      - competitor 1
+      - competitor 2
+    - - range breadth
+      - 8
+      - 5
+      - 7
+    - - aesthetics
+      - 7
+      - 6
+      - 8
+    - - market price
+      - 6
+      - 7
+      - 5
+    - - efficiency
+      - 9
+      - 6
+      - 7
+    - - lifetime
+      - 8
+      - 7
+      - 6
+    - - controlability
+      - 8
+      - 6
+      - 7
+  - name: competitive_landscape
+    value: The product idea does not have specific details, which makes it difficult
+      to identify direct competitors. However, in a general sense, it may face competition
+      from a range of existing products that cater to a broad audience. Competitors
+      could include established brands that offer similar functionalities or services
+      in a general market. The absence of detailed attributes in the product idea
+      limits the ability to precisely pinpoint competitive advantages or disadvantages.
+  - name: application_trends
+    value: Current digital trends highlight the growing importance of personalization,
+      automation, and sustainability across various sectors such as retail and art
+      & culture. Market adoption is driven by consumer demand for enhanced experiences,
+      the increasing use of AI and data analytics, and a focus on eco-friendly practices.
+      Given the lack of specific details about the product idea, its alignment with
+      these trends is uncertain. However, if it can incorporate elements like personalized
+      user experiences or sustainable solutions, it may have a strong market fit.
+      Future relevance will depend on its adaptability to evolving consumer preferences
+      and technological advancements.
+  - name: competitive_benchmarking
+    value: The product idea lacks specific details, making it challenging to benchmark
+      effectively against key market alternatives. However, identifying unique selling
+      propositions (USPs) and technological advantages will depend on understanding
+      the target applications and audience. Without clarity on the product's features,
+      price point, and intended benefits, assessing market barriers becomes speculative.
+      Competitive products can vary widely, and their strengths or weaknesses must
+      be analyzed in relation to the proposed innovation. A more focused description
+      will enable a more precise and meaningful competitive analysis.
+  - name: portfolio_review
+    value:
+    - metric: Estimated R&D Cost
+      value: "â‚¬150,000"
+      assessment: Medium
+    - metric: Target Gross Margin
+      value: 45%
+      assessment: High
+    - metric: Expected Payback Period
+      value: 2.5 Years
+      assessment: Favorable
+    - metric: Portfolio Fit Index
+      value: 8.5 / 10
+      assessment: Strategic High
+  - name: stakes
+    value:
+    - - - Operations Manager
+        - high
+      - - Department Lead
+        - middle
+      - - End User
+        - low
+    - - - Operations Manager
+        - high
+      - - Department Lead
+        - middle
+      - - End User
+        - low
+  - name: all_apps
+    value:
+    - - stakeholder: Store Manager
+        job: Monitor daily performance and resource availability efficiently.
+        struggle: Manual data tracking is time-consuming and prone to human error.
+    - - stakeholder: Store Manager
+        job: Monitor daily performance and resource availability efficiently.
+        struggle: Manual data tracking is time-consuming and prone to human error.
+  time:timestamp: '2026-11-12T14:50:41.170572+01:00'
+---
+event:
+  concept:instance: 115972
+  id:id: ex-ante
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: state/change
+  cpee:state: finished
+  time:timestamp: '2026-11-12T14:50:42.988642+01:00'
+---
+event:
+  concept:instance: 115972
+  concept:name: Result summary and idea approval
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/final_judgment
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 11ff5c2b0e4263587df10f0524292414
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: unknown
+  cpee:lifecycle:transition: activity/receiving
+  time:timestamp: '2026-11-12T14:50:42.975893+01:00'
+  data:
+  - name: result
+    mimetype: application/json
+    data: '{"status": "success", "decision": "withdraw", "justification": "The analysis
+      indicates significant risks in market readiness and competitive positioning
+      that outweigh potential benefits.", "key_drivers": ["Competitive landscape is
+      saturated with established players, making entry challenging.", "Spider graph
+      scores reveal weaknesses in critical areas such as user experience and innovation.",
+      "Stakeholder mapping shows limited support from key stakeholders, indicating
+      potential internal resistance."]}'
+---
+event:
+  concept:instance: 115972
+  concept:name: Result summary and idea approval
+  concept:endpoint: https://lehre.bpm.in.tum.de/ports/4568/final_judgment
+  id:id: a7
+  cpee:activity: a7
+  cpee:activity_uuid: 11ff5c2b0e4263587df10f0524292414
+  cpee:instance: b159aac2-e68d-4203-8485-e6bab756ea8b
+  lifecycle:transition: complete
+  cpee:lifecycle:transition: activity/done
+  time:timestamp: '2026-11-12T14:50:42.976856+01:00'
