@@ -1,0 +1,222 @@
+# Synthesis of the spreadsheet: Agentic orchestration
+
+Based on the uploaded literature review spreadsheet, Agentic orchestration is primarily investigated as an approach to coordinating AI agents, tools, and workflows to achieve complex objectives under operational constraints.
+
+The spreadsheet contains two main sources of evidence: the `AgenticOrchestration` sheet, which captures research applications and orchestration approaches, and the `Properties` sheet, which records definitions, goals, and properties across the reviewed studies.
+
+The synthesis below focuses on the findings explicitly represented in these sheets, rather than treating all characteristics as universal or empirically validated.
+
+## 1. Definition of agentic orchestration
+
+The reviewed literature does not establish a single, universally accepted definition of agentic orchestration. Instead, the concept is described through several complementary perspectives.
+
+A synthesized definition based on the spreadsheet is:
+
+> Agentic orchestration is a goal-oriented approach to coordinating autonomous or semi-autonomous AI agents, tools, and computational workflows. It enables the decomposition of complex tasks, dynamic allocation of responsibilities, execution and monitoring of activities, and adaptation of orchestration decisions to changing objectives, system states, and operational constraints.
+
+Three recurring perspectives can be distinguished:
+
+- Workflow-centric orchestration: Agents are embedded in structured workflows, pipelines, or directed acyclic graphs (DAGs), where tasks and dependencies are explicitly represented.
+- Agent-centric orchestration: An orchestrator or a collection of specialized agents performs planning, routing, task allocation, tool invocation, and coordination.
+- System-centric orchestration: Agentic orchestration manages resources, services, and system states across distributed infrastructures, such as cloud-edge environments, communication networks, and enterprise systems.
+
+The spreadsheet also highlights a distinction between the orchestration of agents and the agency of individual agents. For example, the study From Conversation to Orchestration characterizes agentic systems through high agency, underspecification, directness of impact, goal-directedness, and long-term planning.
+
+Thus, agentic orchestration is not simply the automation of a workflow; it is the coordination of intelligent, goal-directed entities within an execution system.
+
+## 2. Goals of agentic orchestration
+
+The findings indicate that agentic orchestration has two overarching goals: achieving the intended task objectives and optimizing the process through which those objectives are achieved.
+
+The goals can be grouped into five categories.
+
+| Goal category                      | Main objectives identified in the spreadsheet                                                                              |
+| ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Task and outcome optimization      | Improve task completion, accuracy, performance, robustness, and decision quality.                                          |
+| Resource and cost optimization     | Reduce computational and token costs, improve resource utilization, and optimize service placement and allocation.         |
+| Operational efficiency             | Increase throughput, reduce latency, improve workflow execution efficiency, and minimize manual intervention.              |
+| Autonomous and adaptive execution  | Enable dynamic planning, agent selection, intent interpretation, and adaptation to changing requirements or system states. |
+| Reliable and responsible execution | Ensure safety, trust, accountability, compliance, auditability, and reproducibility.                                       |
+
+A recurring theme is that these goals are often interdependent and sometimes conflicting.
+
+For example, the study Difficulty-Aware Agentic Orchestration for Query-Specific Multi-Agent Workflows explicitly considers the balance between task utility and cost. Similarly, studies on edge-cloud orchestration emphasize resource allocation and performance, while work on clinical and financial workflows places additional emphasis on safety, accountability, and compliance.
+
+This suggests that agentic orchestration is frequently formulated as a multi-objective optimization problem, rather than as the maximization of a single performance measure.
+
+The relevant objectives depend on the application domain:
+
+- In cloud-edge systems, the focus is on resource utilization, task completion, throughput, and cost efficiency.
+- In enterprise workflows, the focus includes scalability, auditability, recovery, and compliance.
+- In clinical workflows, the focus includes patient safety, transparency, accountability, and reduced clinician workload.
+- In LLM-based workflows, the focus includes task quality, tool selection, token consumption, and execution cost.
+
+## 3. Properties of agentic orchestration
+
+The spreadsheet identifies a broad set of properties. These can be consolidated into six major dimensions.
+
+### 3.1. Autonomy and goal-directedness
+
+Agentic orchestration enables systems to execute tasks with limited human intervention while pursuing an explicitly or implicitly defined objective.
+
+Relevant properties include:
+
+- Autonomy
+- Goal-directedness
+- Long-term planning
+- Intent interpretation
+- Autonomous decision-making
+- Tool invocation
+
+Autonomy is not necessarily absolute. Some systems retain human oversight for decisions involving safety, trust, or high operational impact.
+
+### 3.2. Adaptability and dynamic coordination
+
+Agentic orchestration is characterized by its ability to modify execution decisions in response to changing conditions.
+
+Relevant properties include:
+
+- Adaptability
+- Reactivity
+- Dynamic agent routing
+- Dynamic task allocation
+- Continuous feedback
+- State-driven execution
+- Replanning
+
+These properties distinguish agentic orchestration from rigid workflows that rely exclusively on predefined execution paths.
+
+The spreadsheet highlights dynamic routing and state-driven execution in the AgriMitra framework, while several resource orchestration studies emphasize feedback-driven adaptation.
+
+### 3.3. Modularity and distributed coordination
+
+Agentic orchestration frequently relies on specialized agents and modular execution components.
+
+Relevant properties include:
+
+- Modularity
+- Reusability
+- Extensibility
+- Distributed execution
+- Agent specialization
+- Interoperability
+- Explicit task dependencies
+
+The reviewed architectures employ different organizational structures, including centralized orchestrators, distributed agent coordination, graph-based workflows, and hybrid approaches.
+
+Modularity allows specialized agents to perform distinct functions, such as planning, observing, acting, diagnosing, or validating.
+
+### 3.4. Efficiency and resource awareness
+
+Efficiency is one of the most prominent properties across the spreadsheet.
+
+Relevant properties include:
+
+- Cost awareness
+- Computational efficiency
+- Resource optimization
+- Scalability
+- Latency awareness
+- Throughput optimization
+- Token efficiency
+
+Agentic orchestration must account for the overhead introduced by reasoning, communication, coordination, and tool invocation.
+
+Consequently, adding more agents or increasing autonomy does not necessarily improve performance. The orchestration strategy must balance the benefits of collaboration against its computational and operational costs.
+
+### 3.5. Reliability, safety, and trustworthiness
+
+The spreadsheet identifies reliability as an important property, particularly in domains with operational or societal consequences.
+
+Relevant properties include:
+
+- Reliability
+- Robustness
+- Correctness assurance
+- Failure isolation
+- Recovery
+- Deadlock detection and resolution
+- Safety guarantees
+- Trust management
+- Policy enforcement
+
+Some studies also emphasize deterministic execution, idempotency, reproducibility, and formal verification.
+
+These properties are particularly relevant when agentic orchestration is applied to enterprise systems, financial workflows, healthcare, and network infrastructure.
+
+### 3.6. Transparency, accountability, and human involvement
+
+Agentic orchestration introduces challenges related to understanding and supervising interactions between agents.
+
+Relevant properties include:
+
+- Transparency
+- Interpretability
+- Explainability
+- Traceability
+- Observability
+- Auditability
+- Accountability
+- Human-agent collaboration
+
+The spreadsheet indicates that transparency must extend beyond individual agent outputs. It should also account for the interactions and coordination decisions that produce the final outcome.
+
+This is especially important for non-technical users and for workflows requiring regulatory compliance or human approval.
+
+## 4. Consolidated property taxonomy
+
+The following taxonomy summarizes the properties identified across the spreadsheet. It provides a structured view suitable for a scientific literature review.
+
+| Property dimension | Consolidated properties                                                           |
+| ------------------ | --------------------------------------------------------------------------------- |
+| Autonomy           | Autonomy, agency, goal-directedness, long-term planning                           |
+| Coordination       | Agent collaboration, task allocation, dynamic routing, distributed coordination   |
+| Adaptability       | Reactivity, continuous feedback, state-driven execution, replanning               |
+| Architecture       | Modularity, reusability, extensibility, interoperability                          |
+| Efficiency         | Cost awareness, resource optimization, computational efficiency, token efficiency |
+| Scalability        | Scalability, distributed execution, workload handling                             |
+| Reliability        | Robustness, correctness assurance, recovery, failure isolation                    |
+| Safety and trust   | Safety guarantees, policy enforcement, trust management, privacy                  |
+| Transparency       | Interpretability, explainability, observability, traceability                     |
+| Governance         | Accountability, auditability, compliance, reproducibility                         |
+| Human involvement  | Human-agent collaboration, oversight, controllability                             |
+
+The properties are not equally emphasized across all studies. Some are inherent to the conceptualization of agentic systems, while others represent architectural choices, operational requirements, or evaluation criteria.
+
+For example, autonomy and goal-directedness characterize agentic behavior, whereas auditability and recovery are often properties of the orchestration architecture designed to support reliable operation.
+
+This distinction is important when developing a conceptual framework: not every property of an agentic orchestration system is necessarily a property of the individual agents it coordinates.
+
+## 5. Overall synthesis
+
+The literature represented in the spreadsheet suggests that agentic orchestration can be understood through three interconnected dimensions:
+
+DEFINITION
+
+An adaptive coordination paradigm
+
+The coordination of autonomous or semi-autonomous agents, tools, and workflows to achieve complex, goal-oriented tasks.
+
+GOALS
+
+Effective and efficient task achievement
+
+Optimize task quality, resource utilization, execution efficiency, autonomy, and operational reliability.
+
+PROPERTIES
+
+Capabilities and system characteristics
+
+Autonomy, adaptability, dynamic coordination, modularity, resource awareness, reliability, transparency, and human oversight.
+
+The central finding is that agentic orchestration is evolving from conventional workflow automation toward adaptive, goal-oriented coordination of intelligent agents. Its defining characteristic is the ability to organize and adapt agent activities dynamically, while its primary objectives concern task achievement, efficiency, and reliability.
+
+The reviewed studies also indicate that agentic orchestration is inherently multidimensional. Autonomy and adaptability are necessary to support flexible execution, but they must be complemented by coordination, resource awareness, and mechanisms for ensuring reliability, safety, and transparency.
+
+Consequently, the main research challenge is not merely to increase the autonomy or number of agents, but to design orchestration architectures that balance autonomy and flexibility with efficiency, controllability, and trustworthy execution.
+
+### Suggested paragraph for a scientific literature review
+
+The reviewed literature conceptualizes agentic orchestration as an adaptive, goal-oriented approach to coordinating autonomous or semi-autonomous AI agents, tools, and computational workflows to accomplish complex tasks. In contrast to conventional workflow orchestration, which primarily relies on predefined execution sequences, agentic orchestration enables dynamic task decomposition, agent selection, responsibility allocation, execution monitoring, and adaptive replanning. Its primary goals are to improve task performance and execution efficiency while optimizing resource utilization, computational costs, and operational reliability. The identified properties encompass autonomy and goal-directedness, dynamic coordination and adaptability, modularity and distributed execution, resource awareness and scalability, as well as reliability, safety, transparency, and accountability. These properties are interdependent and vary according to the application domain and architectural design. Overall, agentic orchestration represents a transition from static workflow automation toward intelligent, adaptive coordination, in which the challenge lies in balancing autonomous decision-making and flexible execution with efficiency, controllability, and trustworthy system behavior.
+
+Add explicit definition, goals, and properties headings
