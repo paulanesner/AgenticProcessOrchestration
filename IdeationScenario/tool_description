@@ -1,0 +1,90 @@
+<agent_orchestration_toolkit>
+  <description>
+    This file defines the available service endpoints for an agentic ideation process. 
+    The orchestrating agent (Claude) can use these tools sequentially or conditionally to process a product idea.
+    Base URL: [Link]
+  </description>
+
+  <tools>
+    <tool>
+      <name>get_idea</name>
+      <endpoint>[Link]</endpoint>
+      <method>GET</method>
+      <description>Retrieves the initial raw product idea description (acronym, brand, applications, description, etc.).</description>
+      <parameters>None</parameters>
+    </tool>
+
+    <tool>
+      <name>competitive_landscape</name>
+      <endpoint>[Link]</endpoint>
+      <method>POST</method>
+      <description>Evaluates the competitive landscape, identifies key competitors, and returns a text summary and a spider graph matrix.</description>
+      <parameters>
+        <param>idea_description (JSON object containing acronym, description, applications, etc.)</param>
+      </parameters>
+    </tool>
+
+    <tool>
+      <name>application_trends</name>
+      <endpoint>[Link]</endpoint>
+      <method>POST</method>
+      <description>Analyzes current digital and market trends relevant to the target applications and evaluates market fit. Returns a short summary of the 
+      results.</description>
+      <parameters>
+        <param>idea_description (JSON object)</param>
+      </parameters>
+    </tool>
+
+    <tool>
+      <name>competitive_benchmarking</name>
+      <endpoint>[Link]</endpoint>
+      <method>POST</method>
+      <description>Benchmarks the product idea against market alternatives, highlighting USPs, tech advantages, and barriers. Returns a short summary of the
+      results.</description>
+      <parameters>
+        <param>idea_description (JSON object)</param>
+      </parameters>
+    </tool>
+
+    <tool>
+      <name>financial_data</name>
+      <endpoint>[Link]</endpoint>
+      <method>POST</method>
+      <description>Estimates financial KPIs (R&D cost, gross margin, payback period) and portfolio fit parameters.</description>
+      <parameters>
+        <param>idea_description (JSON object)</param>
+      </parameters>
+    </tool>
+
+    <tool>
+      <name>stakeholders</name>
+      <endpoint>[Link]</endpoint>
+      <method>POST</method>
+      <description>Identifies main buyers and key stakeholders based on an application area.</description>
+      <parameters>
+        <param>idea_description (JSON object)</param>
+        <param>applications (1 application area)</param>
+      </parameters>
+    </tool>
+
+    <tool>
+      <name>jobs_done</name>
+      <endpoint>[Link]</name>
+      <method>POST</method>
+      <description>Analyzes daily operational jobs and struggles for the identified stakeholders.</description>
+      <parameters>
+        <param>stakeholders (Array of strings)</param>
+      </parameters>
+    </tool>
+
+    <tool>
+      <name>final_judgment</name>
+      <endpoint>[Link]</endpoint>
+      <method>POST</method>
+      <description>Synthesizes the analysis results and yields a final executive recommendation ('proceed' or 'withdraw') with a rationale.</description>
+      <parameters>
+        <param>spider, competitive_landscape, application_trends, competitive_benchmarking, portfolio_review, stakes, all_apps</param>
+      </parameters>
+    </tool>
+  </tools>
+</agent_orchestration_toolkit>
